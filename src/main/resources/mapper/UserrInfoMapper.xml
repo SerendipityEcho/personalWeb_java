@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xiaoyi.personalweb.mapper.UserInfoMapper">
+
+    <sql id="selectAll">
+        id, userName, password, userType
+    </sql>
+
+    <!--查询-->
+    <select id="queryByList" parameterType="com.xiaoyi.personalweb.entity.UserInfo" resultType="com.xiaoyi.personalweb.entity.UserInfo">
+        SELECT <include refid="selectAll"/>
+        FROM userinfo
+        <where>
+            <if test="userInfo.userName != null and userInfo.userName != ''">
+                AND userName LIKE concat('%',#{userInfo.userName},'%')
+            </if>
+            <if test="userInfo.userType != null and userInfo.userType >= 0">
+                AND userType = #{userInfo.userType}
+            </if>
+            <if test="userInfo.id != null and userInfo.id >= 0">
+                AND id = #{userInfo.id}
+            </if>
+        </where>
+        LIMIT #{start},#{limit}
+    </select>
+
+    <!--查询对应条件的总条数-->
+    <select id="userCount" parameterType="com.xiaoyi.personalweb.entity.UserInfo" resultType="int">
+        SELECT COUNT(1)
+        FROM userinfo
+        <where>
+            <if test="userName != null and userName != ''">
+                AND userName LIKE concat('%',#{userName},'%')
+            </if>
+            <if test="userType != null and userType >= 0">
+                AND userType = #{userType}
+            </if>
+            <if test="id != null and id >= 0">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--根据用户名查询用户信息-->
+    <select id="selectByUserName" resultType="com.xiaoyi.personalweb.entity.UserInfo" parameterType="string">
+        SELECT <include refid="selectAll"/>
+        FROM userinfo
+        WHERE userName = #{userName}
+    </select>
+
+    <!--查询用户名是否重复-->
+    <select id="existsUserName" resultType="int" parameterType="string">
+        SELECT COUNT(1)
+        FROM userinfo
+        WHERE userName = #{userName}
+        LIMIT 1
+    </select>
+
+    <!--插入-->
+    <insert id="saveUser" parameterType="com.xiaoyi.personalweb.entity.UserInfo">
+        INSERT INTO userinfo(userName,password,userType)
+        VALUES (#{userName},#{password},#{userType})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteUserById">
+        DELETE FROM userinfo
+        WHERE id = #{id}
+    </delete>
+
+    <!--更新-->
+    <update id="updateUserInfo" parameterType="com.xiaoyi.personalweb.entity.UserInfo">
+        UPDATE userinfo
+        SET userName = #{userName}, password = #{password}, userType = #{userType}
+        WHERE id = #{id}
+    </update>
+
+</mapper>
