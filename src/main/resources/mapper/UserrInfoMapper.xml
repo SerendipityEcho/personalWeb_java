@@ -17,7 +17,7 @@
             <if test="userInfo.userName != null and userInfo.userName != ''">
                 AND userName LIKE concat('%',#{userInfo.userName},'%')
             </if>
-            <if test="userInfo.userType != null and userInfo.userType >= 0">
+            <if test="userInfo.userType != null and userInfo.userType > 0">
                 AND userType = #{userInfo.userType}
             </if>
             <if test="userInfo.id != null and userInfo.id >= 0">
