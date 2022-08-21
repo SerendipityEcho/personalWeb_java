@@ -1,4 +1,7 @@
 package com.xiaoyi.personalweb.service;
 
-public class LoginService {
+public interface LoginService {
+
+    boolean login(String username, String password);
+
 }

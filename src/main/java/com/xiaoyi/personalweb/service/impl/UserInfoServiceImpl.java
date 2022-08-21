@@ -50,13 +50,18 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public Result login(UserInfo userInfo) {
+    public UserInfo login(UserInfo userInfo) {
         UserInfo user = userInfoMapper.selectByUserName(userInfo.getUserName());
         if (user == null || !(user.getPassword().equals(userInfo.getPassword()))){
-            return new Result(false);
+            return new UserInfo();
         }
         user.setPassword("");
-        return new Result(user,true);
+        return user;
+    }
+
+    @Override
+    public UserInfo queryById(String id) {
+        return userInfoMapper.queryById(id);
     }
 
 }

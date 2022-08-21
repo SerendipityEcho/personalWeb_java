@@ -1,5 +1,6 @@
 package com.xiaoyi.personalweb.controller;
 
+import com.xiaoyi.personalweb.annotation.CurrentUser;
 import com.xiaoyi.personalweb.entity.Page;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.UserInfo;
@@ -33,11 +34,12 @@ public class UserInfoController {
     }
 
     @GetMapping
-    public Page<UserInfo> getList(UserInfoPage userInfoPage) {
+    public Result getList(UserInfoPage userInfoPage, @CurrentUser UserInfo userInfo) {
+        System.out.println("获取数据:"+userInfo);
         Page<UserInfo> page = new Page<>();
         page.setPageNow(userInfoPage.getPageNow());
         page = userInfoService.queryByList(userInfoPage, page);
-        return page;
+        return Result.getSuccessResult(page);
     }
 
 }

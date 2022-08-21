@@ -32,4 +32,7 @@ public interface UserInfoMapper {
     //  查询用户名是否重复
     int existsUserName(String userName);
 
+    //  根据用户id查询用户信息
+    UserInfo queryById(String userId);
+
 }

@@ -2,7 +2,10 @@ package com.xiaoyi.personalweb.controller;
 
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.UserInfo;
+import com.xiaoyi.personalweb.service.LoginService;
+import com.xiaoyi.personalweb.service.UserInfoService;
 import com.xiaoyi.personalweb.util.TokenUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,19 +15,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/login")
+@RequestMapping("/login")
 public class LoginController {
+
+    @Autowired
+    private UserInfoService userInfoService;
 
     @PostMapping
     public Result login(@RequestBody UserInfo userInfo){
-        System.out.println("有人登录" + userInfo.toString());
-        if (userInfo.getUserName() != null && !"".equals(userInfo.getUserName())){
-            String sign = TokenUtil.sign(userInfo);
-            Map<String, String> resultMap = new HashMap<>();
+        UserInfo resultUserInfo = userInfoService.login(userInfo);
+        if (resultUserInfo.getId() != null && !"".equals(resultUserInfo.getId())){
+            String sign = TokenUtil.sign(resultUserInfo);
+            Map<String, Object> resultMap = new HashMap<>();
             resultMap.put("token",sign);
+            resultMap.put("userInfo", resultUserInfo);
             return Result.getSuccessResult(resultMap);
         }else {
-            return Result.getFailedResult(userInfo);
+            return Result.getFailedResult(userInfo, "用户名密码错误！");
         }
     }
 

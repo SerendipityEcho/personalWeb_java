@@ -1,7 +1,10 @@
 package com.xiaoyi.personalweb.config;
 
+import com.xiaoyi.personalweb.argumentResolver.LoginUserHandlerMethodArgumentResolver;
 import com.xiaoyi.personalweb.interceptor.TokenInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -38,5 +41,13 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new TokenInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePath);
+    }
+
+    // 添加参数解析器
+    @Autowired
+    private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(loginUserHandlerMethodArgumentResolver);
     }
 }

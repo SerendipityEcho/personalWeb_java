@@ -16,7 +16,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             return true;
         }
         response.setCharacterEncoding("utf-8");
-        String token = request.getHeader("X-Token");
+        String token = request.getHeader("token");
         if (null != token) {
             //验证token是否正确
             boolean result = TokenUtil.verify(token);

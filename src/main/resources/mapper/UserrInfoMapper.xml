@@ -51,6 +51,13 @@
         WHERE userName = #{userName}
     </select>
 
+    <!--根据用户id查询用户信息-->
+    <select id="queryById" resultType="com.xiaoyi.personalweb.entity.UserInfo" parameterType="string">
+        SELECT <include refid="selectAll"/>
+        FROM userinfo
+        WHERE id = #{userId}
+    </select>
+
     <!--查询用户名是否重复-->
     <select id="existsUserName" resultType="int" parameterType="string">
         SELECT COUNT(1)

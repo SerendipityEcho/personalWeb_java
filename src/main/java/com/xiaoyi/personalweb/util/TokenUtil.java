@@ -50,11 +50,22 @@ public class TokenUtil {
             DecodedJWT jwt = verifier.verify(token);
             System.out.println("认证通过：");
             System.out.println("issuer: " + jwt.getIssuer());
-            System.out.println("username: " + jwt.getClaim("username").asString());
-            System.out.println("过期时间：      " + jwt.getExpiresAt());
+            System.out.println("userId: " + jwt.getClaim("userId").asString());
+            System.out.println("过期时间：" + jwt.getExpiresAt());
             return true;
         } catch (Exception e){
             return false;
         }
+    }
+
+    /**
+     * 通过token获取用户id
+     * @param token 用户token
+     * @return 用户id
+     */
+    public static String getUserInfoByToken(String token){
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+        DecodedJWT jwt = verifier.verify(token);
+        return jwt.getClaim("userId").asString();
     }
 }
