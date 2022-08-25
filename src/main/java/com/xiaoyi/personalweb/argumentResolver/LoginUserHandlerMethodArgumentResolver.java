@@ -3,7 +3,6 @@ package com.xiaoyi.personalweb.argumentResolver;
 import com.xiaoyi.personalweb.annotation.CurrentUser;
 import com.xiaoyi.personalweb.entity.UserInfo;
 import com.xiaoyi.personalweb.service.UserInfoService;
-import com.xiaoyi.personalweb.service.impl.UserInfoServiceImpl;
 import com.xiaoyi.personalweb.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;

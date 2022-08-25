@@ -2,7 +2,6 @@ package com.xiaoyi.personalweb.controller;
 
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.UserInfo;
-import com.xiaoyi.personalweb.service.LoginService;
 import com.xiaoyi.personalweb.service.UserInfoService;
 import com.xiaoyi.personalweb.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
