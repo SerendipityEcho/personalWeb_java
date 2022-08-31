@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.xiaoyi.personalweb.entity.UserInfo;
+import com.xiaoyi.personalweb.entity.User;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class TokenUtil {
      * @param user
      * @return
      */
-    public static String sign(UserInfo user){
+    public static String sign(User user){
 
         String token = null;
 

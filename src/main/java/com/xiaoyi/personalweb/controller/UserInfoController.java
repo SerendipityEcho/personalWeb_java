@@ -1,11 +1,9 @@
 package com.xiaoyi.personalweb.controller;
 
 import com.xiaoyi.personalweb.annotation.CurrentUser;
-import com.xiaoyi.personalweb.entity.Page;
 import com.xiaoyi.personalweb.entity.Result;
-import com.xiaoyi.personalweb.entity.UserInfo;
-import com.xiaoyi.personalweb.entity.vo.UserInfoPage;
-import com.xiaoyi.personalweb.service.UserInfoService;
+import com.xiaoyi.personalweb.entity.User;
+import com.xiaoyi.personalweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,32 +12,26 @@ import org.springframework.web.bind.annotation.*;
 public class UserInfoController {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private UserService userService;
 
     @PostMapping
-    public Result add(@RequestBody UserInfo userInfo) {
-        return userInfoService.saveUser(userInfo);
+    public Result add(@RequestBody User userInfo) {
+        return new Result(true);
     }
 
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable("id")int id) {
-        boolean isOk = userInfoService.deleteUserById(id);
-        return new Result(isOk);
+        return new Result(true);
     }
 
     @PutMapping
-    public Result update(@RequestBody UserInfo userInfo) {
-        boolean isOk = userInfoService.updateUserInfo(userInfo);
-        return new Result(isOk);
+    public Result update(@RequestBody User userInfo) {
+        return new Result(true);
     }
 
     @GetMapping
-    public Result getList(UserInfoPage userInfoPage, @CurrentUser UserInfo userInfo) {
-        System.out.println("获取数据:"+userInfo);
-        Page<UserInfo> page = new Page<>();
-        page.setPageNow(userInfoPage.getPageNow());
-        page = userInfoService.queryByList(userInfoPage, page);
-        return Result.getSuccessResult(page);
+    public Result getList(User userInfoPage, @CurrentUser User userInfo) {
+        return Result.getFailedResult("");
     }
 
 }

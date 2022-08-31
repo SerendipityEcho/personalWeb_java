@@ -1,7 +1,7 @@
 package com.xiaoyi.personalweb;
 
-import com.xiaoyi.personalweb.entity.UserInfo;
-import com.xiaoyi.personalweb.service.UserInfoService;
+import com.xiaoyi.personalweb.entity.User;
+import com.xiaoyi.personalweb.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,11 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PersonalwebApplicationTests {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private UserMapper userInfoService;
 
     @Test
     void contextLoads() {
-        UserInfo userInfo = userInfoService.queryById("1");
+        User userInfo = userInfoService.selectById("1");
         System.out.println(userInfo);
     }
 

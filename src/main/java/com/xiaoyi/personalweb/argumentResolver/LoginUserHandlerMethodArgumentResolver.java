@@ -1,8 +1,8 @@
 package com.xiaoyi.personalweb.argumentResolver;
 
 import com.xiaoyi.personalweb.annotation.CurrentUser;
-import com.xiaoyi.personalweb.entity.UserInfo;
-import com.xiaoyi.personalweb.service.UserInfoService;
+import com.xiaoyi.personalweb.entity.User;
+import com.xiaoyi.personalweb.service.UserService;
 import com.xiaoyi.personalweb.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -16,23 +16,23 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
 
-    private UserInfoService userInfoService;
+    private UserService userService;
 
     @Autowired
-    public void setUserInfoService(UserInfoService userInfoService) {
-        this.userInfoService = userInfoService;
+    public void setUserInfoService(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.hasParameterAnnotation(CurrentUser.class) &&
-                parameter.getParameterType().isAssignableFrom(UserInfo.class);
+                parameter.getParameterType().isAssignableFrom(User.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         String token = webRequest.getHeader("token");
         String userId = TokenUtil.getUserInfoByToken(token);
-        return userInfoService.queryById(userId);
+        return userService.queryById(userId);
     }
 }
