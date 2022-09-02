@@ -11,6 +11,7 @@ public class BaseEntity implements Serializable {
 
     @TableField(value = "create_by", fill = FieldFill.INSERT)
     private String createUserId; //日志-创建人
+
     @TableField("create_time")
     private Date createTime ;    //日志-创建时间
     @TableField(value = "update_by",fill = FieldFill.INSERT_UPDATE)
