@@ -1,5 +1,6 @@
 package com.xiaoyi.personalweb.controller;
 
+import com.xiaoyi.personalweb.annotation.CurrentUserId;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.Todo;
 import com.xiaoyi.personalweb.service.TodoService;
@@ -15,8 +16,8 @@ public class TodoController {
 
     // 增
     @PostMapping
-    public Result addTodo(Todo todo){
-        return todoService.add(todo);
+    public Result addTodo(Todo todo, @CurrentUserId Integer userId){
+        return todoService.add(todo, userId);
     }
     // 删
     @DeleteMapping
@@ -30,8 +31,8 @@ public class TodoController {
     }
     // 查
     @GetMapping
-    public Result queryByPage(Todo todo){
-        return todoService.queryByPage(todo);
+    public Result queryByPage(Todo todo, @CurrentUserId Integer userId){
+        return todoService.queryByPage(todo, userId);
     }
 
 }

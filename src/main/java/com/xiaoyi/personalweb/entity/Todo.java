@@ -25,4 +25,17 @@ public class Todo extends BaseEntity{
     private String content; // 内容
     private String level; // 重要级别
     private String finished; // 是否完成
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", content='" + content + '\'' +
+                ", level='" + level + '\'' +
+                ", finished='" + finished + '\'' +
+                '}';
+    }
 }
