@@ -1,6 +1,7 @@
 package com.xiaoyi.personalweb.config;
 
 import com.xiaoyi.personalweb.argumentResolver.LoginUserHandlerMethodArgumentResolver;
+import com.xiaoyi.personalweb.argumentResolver.LoginUserIdHandlerMethodArgumentResolver;
 import com.xiaoyi.personalweb.interceptor.TokenInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -46,8 +47,11 @@ public class WebConfig implements WebMvcConfigurer {
     // 添加参数解析器
     @Autowired
     private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
+    @Autowired
+    private LoginUserIdHandlerMethodArgumentResolver loginUserIdHandlerMethodArgumentResolver;
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(loginUserHandlerMethodArgumentResolver);
+        resolvers.add(loginUserIdHandlerMethodArgumentResolver);
     }
 }
