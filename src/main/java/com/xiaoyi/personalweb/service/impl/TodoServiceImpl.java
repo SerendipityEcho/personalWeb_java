@@ -33,7 +33,11 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public Result deleteById(Integer id) {
-        return null;
+        int row = todoMapper.deleteById(id);
+        if (row > 0){
+            return Result.getSuccessResult(row, "删除成功");
+        }
+        return Result.getFailedResult(row,"删除失败，发生位置错误");
     }
 
     @Override
