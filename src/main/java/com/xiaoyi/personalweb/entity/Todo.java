@@ -7,11 +7,8 @@ import lombok.*;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 @TableName("todo")
 public class Todo extends BaseEntity{
     @TableId("todo_id")
