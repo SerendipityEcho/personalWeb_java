@@ -4,6 +4,9 @@ spring:
     username: root
     password: 1393687715
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
   jackson:
     # 格式化全局时间字段
     date-format: yyyy-MM-dd HH:mm:ss
