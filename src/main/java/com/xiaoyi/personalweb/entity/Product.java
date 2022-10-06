@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("product")
-public class product extends BaseEntity {
+@TableName("Product")
+public class Product extends BaseEntity {
 
     @TableId("product_id")
     private Integer id;
