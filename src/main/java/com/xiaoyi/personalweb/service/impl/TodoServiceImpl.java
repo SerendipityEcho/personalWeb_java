@@ -37,7 +37,7 @@ public class TodoServiceImpl implements TodoService {
         if (row > 0){
             return Result.getSuccessResult(row, "删除成功");
         }
-        return Result.getFailedResult(row,"删除失败，发生位置错误");
+        return Result.getFailedResult(row,"删除失败，发生未知错误");
     }
 
     @Override
