@@ -5,10 +5,10 @@ import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.Todo;
 import com.xiaoyi.personalweb.mapper.TodoMapper;
 import com.xiaoyi.personalweb.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @Transactional
 public class TodoServiceImpl implements TodoService {
 
-    @Autowired
+    @Resource
     private TodoMapper todoMapper;
 
     @Override

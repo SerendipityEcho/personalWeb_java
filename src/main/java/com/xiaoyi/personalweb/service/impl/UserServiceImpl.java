@@ -3,17 +3,17 @@ package com.xiaoyi.personalweb.service.impl;
 import com.xiaoyi.personalweb.entity.User;
 import com.xiaoyi.personalweb.mapper.UserMapper;
 import com.xiaoyi.personalweb.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

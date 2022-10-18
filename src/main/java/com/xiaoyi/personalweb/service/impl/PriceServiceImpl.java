@@ -5,17 +5,17 @@ import com.xiaoyi.personalweb.entity.Price;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.mapper.PriceMapper;
 import com.xiaoyi.personalweb.service.PriceService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class PriceServiceImpl implements PriceService {
 
-    @Autowired
+    @Resource
     private PriceMapper priceMapper;
 
     @Override

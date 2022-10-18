@@ -4,17 +4,17 @@ import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.Role;
 import com.xiaoyi.personalweb.mapper.RoleMapper;
 import com.xiaoyi.personalweb.service.RoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired
+    @Resource
     private RoleMapper roleMapper;
 
     @Override

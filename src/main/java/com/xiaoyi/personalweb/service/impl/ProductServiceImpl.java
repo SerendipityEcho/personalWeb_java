@@ -7,24 +7,21 @@ import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.mapper.ProductMapper;
 import com.xiaoyi.personalweb.service.PriceService;
 import com.xiaoyi.personalweb.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductMapper productMapper;
-    private final PriceService priceService;
+    @Resource
+    private ProductMapper productMapper;
 
-    @Autowired
-    public ProductServiceImpl(PriceService priceService, ProductMapper productMapper) {
-        this.priceService = priceService;
-        this.productMapper = productMapper;
-    }
+    @Resource
+    private PriceService priceService;
 
     @Override
     public Result addProduct(Product product) {
