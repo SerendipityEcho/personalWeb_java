@@ -3,21 +3,19 @@ package com.xiaoyi.personalweb.controller;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.User;
 import com.xiaoyi.personalweb.service.LoginService;
-import com.xiaoyi.personalweb.service.UserService;
 import com.xiaoyi.personalweb.util.TokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 public class LoginController {
 
-    @Autowired
+    @Resource
     private LoginService loginService;
 
     @PostMapping("/login")

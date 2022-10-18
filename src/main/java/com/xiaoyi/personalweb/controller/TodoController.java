@@ -4,14 +4,15 @@ import com.xiaoyi.personalweb.annotation.CurrentUserId;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.entity.Todo;
 import com.xiaoyi.personalweb.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/todo")
 public class TodoController {
 
-    @Autowired
+    @Resource
     private TodoService todoService;
 
     // 增

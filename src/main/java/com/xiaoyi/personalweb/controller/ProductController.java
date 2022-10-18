@@ -3,14 +3,15 @@ package com.xiaoyi.personalweb.controller;
 import com.xiaoyi.personalweb.entity.Product;
 import com.xiaoyi.personalweb.entity.Result;
 import com.xiaoyi.personalweb.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
+    @Resource
     private ProductService productService;
 
     @PostMapping
