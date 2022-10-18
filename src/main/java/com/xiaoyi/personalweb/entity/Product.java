@@ -18,5 +18,7 @@ public class Product extends BaseEntity {
     private String name;
     @TableField
     private BigDecimal price;
+    @TableField("group_id")
+    private Integer groupId;
 
 }
