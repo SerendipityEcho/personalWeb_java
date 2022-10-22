@@ -27,6 +27,11 @@ mybatis-plus:
       logic-not-delete-value: 0
       id-type: auto
 
+weixin:
+  appid: APPID
+  secret: APP_SECRET
+  token: TOKEN
+
 logging:
   level:
     com:
